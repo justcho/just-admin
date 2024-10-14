@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Admin</title>
+    <style>
+      html,
+      body,
+      #app {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+      .dots-wrapper {
+        position: relative;
+        background-color: #1677ff;
+        height: 100vh;
+      }
+      .dots-container {
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+      }
+      .dots {
+        animation: bounce 1.5s infinite linear;
+        background: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        height: 20px;
+        text-align: center;
+        width: 20px;
+      }
+
+      .dots:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .dots:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .dots:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .dots:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .dots:nth-child(5) {
+        animation-delay: 1s;
+      }
+      .dots-title {
+        font-family: "Open Sans";
+        color: #fff;
+        font-size: 19px;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 55%;
+        opacity: 1;
+        line-height: 30px;
+      }
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        15% {
+          transform: translateY(-15px);
+        }
+        30% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="dots-wrapper">
+        <div class="dots-container">
+          <div class="dots"></div>
+          <div class="dots"></div>
+          <div class="dots"></div>
+          <div class="dots"></div>
+          <div class="dots"></div>
+        </div>
+        <div class="dots-title">正在加载系统资源，请耐心等待</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

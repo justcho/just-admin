@@ -1,0 +1,12 @@
+<template>
+   <div class="p-4">
+    <div
+      class="border h-full border-gray-200 rounded-lg p-4 flex flex-col justify-center items-center"
+    >
+      <a-spin size="large" />
+      <span class="ml-4 text-lg text-[#1677ff]">test...</span>
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+</script>
