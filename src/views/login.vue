@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import useUserStore from "@/store/user";
+import { useUserStore } from "@/store/user";
 import { ref } from "vue";
 
 const router = useRouter();
@@ -45,7 +45,7 @@ const handleSubmit = () => {
   useUserStore()
     .login(form.value)
     .then((res) => {
-      router.push("/");
+      router.push({ name: "dashboard" });
     });
 };
 </script>

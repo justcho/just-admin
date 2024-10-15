@@ -80,7 +80,7 @@ request.interceptors.response.use(
           content: "登录状态已过期，您可以继续留在该页面，或者重新登录",
           onOk() {
             //  退出登录
-            location.href = "/index";
+            location.href = "/dashboard";
           },
           onCancel() {},
         });

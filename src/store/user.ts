@@ -3,18 +3,23 @@ import { getToken, setToken, removeToken } from "@/utils/auth";
 import { login } from "@/api/login";
 
 interface UserState {
-  // Define the properties of your state here
   token: string;
+  asyncRouter: string[];
+  role: string;
+  isLogin: boolean;
 }
 
 interface UserActions {
   // Define the methods of your actions here
   [key: string]: any; // Added index signature
 }
-
-const useUserStore = defineStore<string, UserState, UserActions>("user", {
+const baseRouterName = ['dashboard']
+export const useUserStore = defineStore<string, UserState, UserActions>("user", {
   state: (): UserState => ({
     token: getToken(),
+    asyncRouter: [],
+    role: "user",
+    isLogin: false,
   }),
   actions: {
     // Implement your action methods here
@@ -24,6 +29,14 @@ const useUserStore = defineStore<string, UserState, UserActions>("user", {
           .then((res: any) => {
             setToken(res.result.token);
             this.token = res.result.token;
+            this.role = "admin";
+            this.isLogin = true;
+            if (this.role == 'admin') {
+              this.asyncRouter = ['goods', 'goodsAdd']
+            } else if (this.role == 'user') {
+              this.asyncRouter = ['user', 'userList']
+            }
+            this.asyncRouter = [...baseRouterName, ...this.asyncRouter]
             resolve();
           })
           .catch((error: any) => {
@@ -32,6 +45,7 @@ const useUserStore = defineStore<string, UserState, UserActions>("user", {
       });
     },
   },
+  persist: true,
 });
 
-export default useUserStore;
+

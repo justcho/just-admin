@@ -18,6 +18,6 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const handleBackHome = () => {
-  router.push("/");
+  router.push({ name: "dashboard" });
 };
 </script>
