@@ -1,1 +1,0 @@
-import{x as s,o as r,c as o,y as t}from"./index-DF-e-tia.js";const c={},n={class:"p-4"};function l(a,e){return r(),o("div",n,e[0]||(e[0]=[t("div",{class:"border h-full border-gray-200 rounded-lg p-4 flex flex-col justify-center items-center"},[t("span",{class:"ml-4 text-lg text-[#1677ff]"},"测试test...")],-1)]))}const f=s(c,[["render",l]]);export{f as default};
