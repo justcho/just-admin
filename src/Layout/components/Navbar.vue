@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { removeToken } from "@/utils/auth";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -54,7 +53,6 @@ function formatDate(cellValue: Date | string): string {
 }
 
 const handleLogout = () => {
-  removeToken();
   router.push("/login");
 };
 

@@ -6,8 +6,8 @@ import {
 import Layout from "@/Layout/index.vue";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { useUserStore } from "@/store/user";
-import { getToken } from "@/utils/auth";
+import { useUserStore } from "../store/user";
+import { getToken } from "../utils/auth";
 
 NProgress.configure({ showSpinner: false });
 
@@ -24,13 +24,16 @@ export const routes = [
     hidden: true,
   },
   {
+    path: "/",
+    redirect: "/login",
+  },
+  {
     path: "",
     component: Layout,
     name: "dashboard",
-    redirect: "/dashboard",
     children: [
       {
-        path: "dashboard",
+        path: "/dashboard",
         key: "dashboard",
         name: "dashboard",
         label: "首页",
@@ -52,13 +55,14 @@ export const routes = [
 export const asyncRouter: RouteRecordRaw[] = [
   {
     path: "/goods",
+    component: Layout,
     name: "goods",
     meta: {
       showMenu: true,
       title: "商品管理",
       icon: "goods",
     },
-    redirect: "/goods/add",
+
     children: [
       {
         path: "add",
@@ -71,32 +75,11 @@ export const asyncRouter: RouteRecordRaw[] = [
       },
     ],
   },
-  {
-    path: "/user",
-    name: "user",
-    meta: {
-      showMenu: true,
-      title: "用户管理",
-      icon: "goods",
-    },
-    redirect: "/user/list",
-    children: [
-      {
-        path: "list",
-        name: "userList",
-        meta: {
-          showMenu: true,
-          title: "用户列表",
-        },
-        component: () => import("@/views/test/test1.vue"),
-      },
-    ],
-  },
 ];
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/just-admin'),
   routes: [...routes, ...asyncRouter],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     } else {
@@ -105,9 +88,9 @@ const router = createRouter({
   },
 });
 
-const whiteList = ["login"];
+const whiteList = ["login", "dashboard", "goodsAdd"];
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const auth = useUserStore();
   NProgress.start();
 

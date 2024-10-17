@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { getToken, setToken, removeToken } from "@/utils/auth";
-import { login } from "@/api/login";
+import { getToken, setToken} from "../utils/auth";
+import { login } from "../api/login";
 
 interface UserState {
   token: string;

@@ -3,8 +3,8 @@
     <div
       class="border h-full border-gray-200 rounded-lg p-4 flex flex-col justify-center items-center"
     >
-      <a-spin size="large" />
-      <span class="ml-4 text-lg text-[#1677ff]">test...</span>
+      <!-- <a-spin size="large" /> -->
+      <span class="ml-4 text-lg text-[#1677ff]">测试test...</span>
     </div>
   </div>
 </template>

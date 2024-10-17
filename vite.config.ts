@@ -8,6 +8,7 @@ import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/just-admin/",
   plugins: [
     vue(),
     Components({
@@ -45,6 +46,11 @@ export default defineConfig({
     proxy: {
       // https://cn.vitejs.dev/config/#server-proxy
       "/dev-api": {
+        target: "https://api.apiopen.top",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/dev-api/, ""),
+      },
+      "/prod-api": {
         target: "https://api.apiopen.top",
         changeOrigin: true,
         rewrite: (p) => p.replace(/^\/dev-api/, ""),

@@ -31,21 +31,16 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { useUserStore } from "@/store/user";
 import { ref } from "vue";
 
 const router = useRouter();
 
 const form = ref({
-  account: "309324904@qq.com",
+  account: "admin",
   password: "123456",
 });
 
 const handleSubmit = () => {
-  useUserStore()
-    .login(form.value)
-    .then((res) => {
-      router.push({ name: "dashboard" });
-    });
+  router.push({ name: "dashboard" });
 };
 </script>
